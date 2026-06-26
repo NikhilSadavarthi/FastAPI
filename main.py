@@ -26,4 +26,4 @@ def view_patient(patient_id: str = Path(..., description='ID of patient', exampl
     if patient_id in data:
         return data[patient_id]
     else:
-        raise HTTPException('status_code=404', detail='patient not found')
+        raise HTTPException(status_code=404, detail='patient not found')

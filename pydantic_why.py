@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import List,Dict,Optional
 
 
 
@@ -17,6 +18,11 @@ from pydantic import BaseModel
 class Patient(BaseModel):
     name:str
     age: int
+    weight: float
+    married: bool = False # False is defoult value
+    allergies: Optional[List[str]] = None #none is required and its defoult value 
+    contact_details: Dict[str,str]
+
 
 def insert_data(patient):  #basemodel call
 
@@ -24,7 +30,7 @@ def insert_data(patient):  #basemodel call
     print(patient.age)
     print('added to database')
 
-patient_info ={'name' : 'nikhil', 'age' : 'two'}
+patient_info ={'name' : 'nikhil', 'age' : '26', 'weight':'60', 'married':True, 'allergies':['pollen', 'Dust'],'contact_details':{'email': 'nik@gmail.com', 'phone':'12345678'}}
 
 patient1 = Patient(**patient_info)
 
